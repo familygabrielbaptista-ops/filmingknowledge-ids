@@ -3,50 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verificação de Identificação - Filming Knowledge</title>
-
+    <title>Filming Knowledge • Verificação de Membro</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #f3f3f3;
-            padding: 20px;
+            background: #0a0f24;
+            color: white;
             text-align: center;
+            padding: 40px;
         }
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
+
+        #container {
             max-width: 420px;
             margin: auto;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+            background: #11182f;
+            padding: 30px;
+            border-radius: 10px;
         }
-        .status-ativo {
-            color: green;
-            font-weight: bold;
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 18px;
         }
-        .status-inativo {
-            color: red;
-            font-weight: bold;
+
+        button {
+            margin-top: 15px;
+            padding: 12px 20px;
+            font-size: 16px;
+            background: #1c4cff;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
         }
-        img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 15px;
-            border: 3px solid #ddd;
+
+        button:hover {
+            background: #0033cc;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-size: 18px;
         }
     </style>
 </head>
-
 <body>
 
-    <h2>Filming Knowledge • Verificação de Membro</h2>
+    <div id="container">
+        <h2>Filming Knowledge</h2>
+        <h3>Verificação de Membro</h3>
 
-    <div id="resultado" class="card">
-        Carregando...
+        <input id="idInput" type="text" placeholder="Digite o ID (ex: FK001)">
+        <button onclick="verificar()">Verificar</button>
+
+        <div id="resultado"></div>
     </div>
 
-    <script src="membros.js"></script>
+    <script>
+        let dados = null;
+
+        // Carregar JSON corretamente
+        fetch("membros.json")
+            .then(response => response.json())
+            .then(json => {
+                dados = json; // agora funciona!
+            })
+            .catch(err => {
+                document.getElementById("resultado").innerText = "Erro ao carregar dados.";
+            });
+
+        function verificar() {
+            const id = document.getElementById("idInput").value.trim().toUpperCase();
+            const resultado = document.getElementById("resultado");
+
+            if (!dados) {
+                resultado.innerHTML = "Carregando dados...";
+                return;
+            }
+
+            if (dados[id]) {
+                const membro = dados[id];
+                resultado.innerHTML = `
+                    <strong>ID encontrado!</strong><br><br>
+                    <b>Nome:</b> ${membro.nome}<br>
+                    <b>Função:</b> ${membro.funcao}<br>
+                    <b>Estado:</b> ${membro.estado}
+                `;
+            } else {
+                resultado.innerHTML = `<span style="color:red;">ID não encontrado.</span>`;
+            }
+        }
+    </script>
+
 </body>
 </html>
