@@ -1,0 +1,47 @@
+{
+    "FK001": {
+        "nome": "Carla Quintino",
+        "funcao": "Diretora Geral",
+        "estado": "Ativo"
+    },
+    "FK002": {
+        "nome": "Lucília Ventura",
+        "funcao": "Vice Diretora",
+        "estado": "Ativo"
+    },
+    "FK003": {
+        "nome": "Janet Ventura",
+        "funcao": "Tesoureira",
+        "estado": "Ativo"
+    },
+    "FK004": {
+        "nome": "Graciano Sacato",
+        "funcao": "Diretor de Filmagem",
+        "estado": "Ativo"
+    },
+    "FK005": {
+        "nome": "Célio",
+        "funcao": "Coordenador de Produção",
+        "estado": "Ativo"
+    },
+    "FK006": {
+        "nome": "Domingas",
+        "funcao": "Assessora de Parcerias",
+        "estado": "Ativo"
+    },
+    "FK007": {
+        "nome": "Victor Agostinho",
+        "funcao": "Coordenador de Comunicação",
+        "estado": "Ativo"
+    },
+    "FK008": {
+        "nome": "Iracelma Augusto",
+        "funcao": "Secretária",
+        "estado": "Ativo"
+    },
+    "FK009": {
+        "nome": "Márcia de Jesus Paulo",
+        "funcao": "Repórter",
+        "estado": "Ativo"
+    }
+}
